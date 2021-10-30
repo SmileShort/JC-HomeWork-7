@@ -72,7 +72,6 @@ public class WeatherResponse {
         if (!response.isSuccessful()){
             throw new IOException("Запрос провален. Код ошибки: " + response.code() + " ; и тело ошибки: " + response.body().string());
         }
-
         return response.body().string();
     }
 
