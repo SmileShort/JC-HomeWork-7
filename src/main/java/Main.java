@@ -10,6 +10,7 @@ public class Main {
         String cityName = scanner.nextLine();
         String cityCode = WeatherResponse.detectCity(cityName);
         System.out.println(WeatherResponse.detectWheather(cityCode));
+
     }
 
 }
