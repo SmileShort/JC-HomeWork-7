@@ -31,7 +31,7 @@ public class WeatherResponse {
 
         Response response= client.newCall(request).execute();
 
-        String json = response.body().string();  // ответ от вервера переводим в строку и сохраняем его в строку json
+        String json = response.body().string();
 
         if (!response.isSuccessful()){
             throw new IOException("Запрос провален. Код ошибки: " + response.code() + " ; и тело ошибки: " + response.body().string());
