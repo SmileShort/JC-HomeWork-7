@@ -40,7 +40,7 @@ public class WeatherResponse {
         if (objectMapper.readTree(json).size() >0){
             String city = objectMapper.readTree(json).get(0).at("/LocalizedName").asText();
             String country = objectMapper.readTree(json).get(0).at("/Country/LocalizedName").asText();
-            System.out.println(country + " " + city);
+            System.out.println( "Страна: " +country + ";    Город: " + city);
         } else {
             throw new IOException("Сервер не дал ответа");
         }
@@ -75,5 +75,39 @@ public class WeatherResponse {
 
         return response.body().string();
     }
+
+//    public static void catchWeather(String cityCode) throws IOException{
+//
+//        HttpUrl detectWeatherURL = new HttpUrl.Builder()
+//                .scheme("http")
+//                .host(BaseParams.HOST)
+//                .addPathSegment("forecasts")
+//                .addPathSegment("v1")
+//                .addPathSegment("daily")
+//                .addPathSegment("5day")
+//                .addPathSegment(cityCode)
+//                .addQueryParameter("apikey", BaseParams.API_KEY)
+//                .addQueryParameter("metric", "true")
+//                .build();
+//
+//        Request request = new Request.Builder()
+//                .addHeader("Accept", "application/json")
+//                .url(detectWeatherURL)
+//                .build();
+//
+//        Response response = client.newCall(request).execute();
+//
+//        if (!response.isSuccessful()){
+//            throw new IOException("Запрос провален. Код ошибки: " + response.code() + " ; и тело ошибки: " + response.body().string());
+//        }
+//
+//        String json = response.body().string();
+//        if (objectMapper.readTree(json).size() >0){
+//
+//        } else {
+//            throw new IOException("Сервер не дал ответа");
+//        }
+//
+//    }
 
 }
